@@ -1,0 +1,109 @@
+# Conversation Settings (Modified)
+conversation_setting:
+  system: "Now you are a smart medical guide assistant in a hospital lobby. Your name is {role_type}, and your speaking style is {character}. You can provide professional medical consultations based on patients' needs and answer various health-related questions using your medical knowledge."
+  first_input: "My {product_info}. You need to write an introductory copy based on the service information I provide. You need to highlight the service's key features and attract users' attention."
+
+# Data Generation Settings (Modified)
+data_generation_setting:
+  # Generate ${each_product_gen} conversations for each service.  Each conversation includes [Copywriting + Q&A].
+  each_product_gen: 3
+
+  # Number of dialogues in each conversation. Copywriting is 1, and the rest will generate ${each_conversation_qa} - 1 Q&As.
+  each_conversation_qa: 5
+
+  # Randomly select ${each_pick_hightlight} highlights for each piece of copywriting.
+  each_pick_hightlight: 3  # NOTE:  The original variable name was misspelled, but kept for consistency.  It should be "highlights".
+
+  # After generating each piece of copywriting, randomly select ${each_pick_question} questions to generate user inquiries.
+  each_pick_question: 3  # NOTE: This is the number of questions to extract *after* the copywriting, and doesn't have to be the same as the number of highlights.
+
+  # Dataset Generation Prompt (Modified)
+  dataset_gen_prompt: |
+    You are now a smart medical guide assistant. Your name is {role_type}, and your speaking style is {character}.
+    My {product_info}. You need to write an introductory copy based on this information and highlight the service's key features.
+    After outputting the copy, based on the service information and from the patient's perspective, ask and answer {each_conversation_qa} questions based on common inquiries.
+    Output all information using my desired JSON format: {dataset_json_format}. Make sure the JSON is valid.
+
+  # Data Generation JSON Format (Modified)
+  dataset_json_format: |
+    {
+      "conversation": [
+        {
+          "output": "Introduce yourself and guide the patient to ask their questions."
+        },
+        {
+          "input": "Patient's question",
+          "output": "Smart medical guide assistant's answer"
+        },
+        {
+          "input": "Patient's question",
+          "output": "Smart medical guide assistant's answer"
+        },
+        ... until all questions are finished
+      ]
+    }
+
+# Role Type and Personality (No change, but relisted for consistency)
+role_type:
+  "Smart Medical Guide Assistant":  # Example: Loli (This comment seems out of place in a hospital setting, perhaps remove or change)
+    - "Dignified"
+    - "Serious"
+    - "Refers to customers as [friends]"
+
+# Product Information Structure (Modified, but not applicable in this scenario as it focuses on service introduction)
+# product_info_struct: (Removed, as it's no longer needed to describe products)
+product_info_struct:
+  - "Department name is [{name}]"
+  - "Department highlights are [{highlights}]"
+
+# prompt: Common types of questions patients ask (10 examples, listing only the main categories)
+customer_question_type:
+  - "Service content and scope"
+  - "Doctor qualifications and experience"
+  - "Appointment and registration process"
+  - "Consultation time and location"
+  - "Examination items and costs"
+  - "Illness consultation and answers"
+  - "Prescription and medication purchase"
+  - "Follow-up treatment and visits"
+  - "Privacy protection and data security"
+  - "Complaint and suggestion channels"
+
+# First prompt:  List 10 common consumer product categories and 5 subcategories for each.
+# Per-category prompt: You are now an expert in any product.  You can list 6 highlights or features of each product, then output in Python dict format: {Category Name: [feature1, feature2] ...}.  Remove the "feature12" text, and output nothing but the Python dictionary.  Do not include any warning messages.  [xxx]
+product_list:
+  "Medical Services and Health Products":
+    "Basic Medical Services":
+      "Online Consultation": ["Professional doctor answers", "Consult anytime, anywhere", "Privacy protection", "Electronic medical record management", "Personalized advice", "Multiple payment methods"]
+      "Family Doctor Service": ["Long-term health management", "Regular follow-up visits", "Emergency assistance", "Health education", "Personalized health plan", "Shared by family members"]
+      "Medical Checkup Packages": ["Comprehensive examination", "Authoritative report", "Personalized interpretation", "Convenient appointment", "Multiple package options", "Follow-up tracking service"]
+      "Vaccination": ["Officially sourced vaccines", "Professional vaccination service", "Vaccination record management", "Health consultation", "Vaccination reminders", "Full tracking service"]
+      "Chronic Disease Management Service": ["Regular monitoring", "Professional guidance", "Medication management", "Health education", "Dietary advice", "Psychological support"]
+
+    "Rehabilitation and Physiotherapy Services":
+      "Physical Rehabilitation": ["Personalized rehabilitation plan", "Guidance from professional rehabilitation therapists", "Advanced rehabilitation equipment", "Regular assessment and adjustment", "Psychological rehabilitation support", "Convenient appointment service"]
+      "Traditional Chinese Medicine Therapy": ["Traditional Chinese medicine theory", "Various physiotherapy methods", "Personalized treatment plan", "Minimal side effects", "Rehabilitation cycle tracking", "Health and wellness advice"]
+      "Rehabilitation Equipment Rental": ["High-quality equipment", "Convenient rental process", "Regular maintenance and inspection", "Professional usage guidance", "Wide selection of equipment", "Flexible rental periods"]
+      "Rehabilitation Aid Purchase": ["Adapts to various needs", "Professional purchase advice", "Quality assurance", "Excellent after-sales service", "Multiple payment methods", "Fast delivery"]
+      "Rehabilitation Training Camp": ["Professional coaching team", "Personalized training plan", "Group rehabilitation atmosphere", "Regular assessment feedback", "Psychological rehabilitation support", "Rich social activities"]
+
+    "Health Monitoring and Management Products":
+      "Smart Wearable Devices": ["Real-time health data monitoring", "High accuracy", "Data synchronization to the cloud", "Long battery life", "Multiple sports modes", "Stylish design"]
+      "Home Medical Devices": ["Simple operation", "Accurate measurement", "Multiple function options", "Quality assurance", "Excellent after-sales service", "Suitable for home environment"]
+      "Health Management Software": ["Personalized health record management", "Data analysis and interpretation", "Health reminders and warnings", "Multiple health plan options", "Social sharing function", "Professional health information"]
+      "Nutritional Supplements": ["High-quality ingredients", "Scientific formula", "Various efficacy options", "Easy to absorb", "No side effects", "Suitable for different people"]
+      "Health Food": ["Natural ingredients", "No additives", "Balanced nutrition", "Good taste", "Suitable for long-term consumption", "Variety of flavor options"]
+
+    "Mental Health Services":
+      "Psychological Counseling": ["Professional psychological counselors", "One-on-one service", "Privacy protection", "Personalized psychological assessment", "Multiple counseling methods", "Follow-up tracking service"]
+      "Psychological Lectures and Courses": ["Lectures by authoritative experts", "Practical psychological techniques", "Highly interactive", "Multiple course options", "Post-course consultation service", "Community support"]
+      "Psychological Testing and Assessment": ["Scientific scale assessment", "High accuracy", "Personalized interpretation", "Privacy protection", "Professional advice", "Full tracking service"]
+      "Psychological Intervention and Treatment": ["Personalized treatment plan", "Professional therapist team", "Multiple treatment options", "Regular assessment and adjustment", "Psychological rehabilitation support", "Full tracking service"]
+      "Mental Health APP": ["Mental health information", "Interactive community", "Self-assessment tools", "Online consultation function", "Mental health courses", "Personalized health plan"]
+
+    "Advanced Medical Services":
+      "International Medical Consultation": ["Global doctor resources", "Multilingual service", "Cross-border medical arrangements", "Personalized health planning", "Medical tourism assistance", "High-end private service"]
+      "Private Medical Consultant": ["Dedicated medical team", "24/7 online service", "Emergency handling", "Disease prevention guidance", "Healthy lifestyle advice", "Medical expense optimization"]
+      "High-end Medical Checkup Center": ["Cutting-edge medical equipment", "Five-star checkup environment", "In-depth checkup items", "Authoritative expert interpretation", "Customized checkup plan", "Follow-up health management"]
+      "Telemedicine Services": ["Video consultation", "Remote monitoring", "Online prescription", "Medication delivery", "Continuous health monitoring", "Family health record management"]
+      "Medical Tourism Services": ["Professional travel planning", "Combination of medical care and leisure", "Overseas medical partner institutions", "Language translation service", "Visa assistance", "Travel safety guarantee"]

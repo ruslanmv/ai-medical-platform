@@ -1,0 +1,107 @@
+Pediatrics:
+  highlights:
+    - Cai Zhaolun
+    - Chen Xinzu
+    - Fan Chuanwen
+    - Li Li
+    - Shu Ye
+  id: 4
+  images: product_info/images/erke.jpg
+  instruction: product_info/instructions/erke.md
+Internal Medicine:
+  highlights:
+    - Wang Cun
+    - Xia Lin
+    - Cheng Zhong
+    - Chen Haining
+    - Huang Libin
+  id: 1
+  images: ./product_info/images/neike.jpg
+  instruction: ./product_info/instructions/neike.md
+Dentistry:
+  highlights:
+    - Chen Zhixing
+    - Hu Hua
+    - Peng Bo
+    - Xiao Yang
+    - Cao Chang
+  id: 8
+  images: product_info/images/kouqiangke.jpg
+  instruction: product_info/instructions/kouqiangke.md
+Surgery:
+  highlights:
+    - Liu Kai
+    - Wang Ziqiang
+    - Wang Yong
+    - Yang Lie
+    - Chen Xiaolong
+  id: 2
+  images: product_info/images/waike.jpg
+  instruction: product_info/instructions/waike.md
+Obstetrics and Gynecology:
+  highlights:
+    - Du Xiao
+    - Hu Jiankun
+    - Ma Qin
+    - Wu Qingbin
+    - Wang Xiaodong
+  id: 3
+  images: product_info/images/fuchanke.jpg
+  instruction: product_info/instructions/fuchanke.md
+Rehabilitation Medicine:
+  highlights:
+    - Yu Rong
+    - Duan Weiqiang
+    - Liu Yong
+    - Wu Junliang
+    - Zhang Zhenyu
+  id: 10
+  images: product_info/images/kangfuke.jpg
+  instruction: product_info/instructions/kangfuke.md
+Plastic Surgery:
+  highlights:
+    - Zhang San (Placeholder Name - literally "Zhang Three")
+    - Li Si (Placeholder Name - literally "Li Four")
+  id: 11
+  images: product_info/images/2024-12-18-12-20-16.png
+  instruction: product_info/instructions/2024-12-18-12-20-16.md
+Dermatology:
+  highlights:
+    - Liu Yong
+    - Shen Chaoyong
+    - Wang Mojin
+    - Wei Mingtian
+    - Yu Yongyang
+  id: 7
+  images: product_info/images/pifuke.jpg
+  instruction: product_info/instructions/pifuke.md
+Ophthalmology:
+  highlights:
+    - Yang Xuyang
+    - Chen Yi
+    - Deng Xiangbing
+    - Li Zhigui
+    - Meng Wenjian
+  id: 5
+  images: product_info/images/yanke.jpg
+  instruction: product_info/instructions/yanke.md
+Psychiatry:
+  highlights:
+    - Li Wei
+    - Tang Junyang
+    - Xu Xuewen
+    - Chen Junjie
+    - Li Zhengyong
+  id: 9
+  images: product_info/images/jingshenke.jpg
+  instruction: product_info/instructions/jingshenke.md
+ENT:
+  highlights:
+    - Wang Yong
+    - Wu Xiaoting
+    - Yan Hui
+    - Chen Zhixin
+    - Fang Chao
+  id: 6
+  images: product_info/images/erbihouke.jpg
+  instruction: product_info/instructions/erbihouke.md
